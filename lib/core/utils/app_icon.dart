@@ -1,0 +1,54 @@
+abstract class AppIcon {
+  static const String _baseUrl = "assets/icons/";
+  static const String addIcon1 = "${_baseUrl}Bag.svg";
+  static const String email1 = "${_baseUrl}email.svg";
+  static const String phone1 = "${_baseUrl}call.svg";
+  static const String password1 = "${_baseUrl}password.svg";
+  static const String username1 = "${_baseUrl}Profile.svg";
+  static const String splash1 = "${_baseUrl}splash.svg";
+  static const String start1 = "${_baseUrl}start.svg";
+  static const String shoppingbag1 = "${_baseUrl}shopping bag.svg";
+  static const String cancel = "${_baseUrl}arrowgo.svg";
+  static const String correct = "${_baseUrl}arrowgo.svg";
+  static const String profilebag1 = "${_baseUrl}profilebag.svg";
+  static const String fav1 = "${_baseUrl}Heart - Iconly Pro.svg";
+  static const String line1 = "${_baseUrl}Line 14.svg";
+  static const String setting1 = "${_baseUrl}Setting - Iconly Pro.svg";
+  static const String logout1 = "${_baseUrl}Logout.svg";
+
+  static const String salesconsulting1 = "${_baseUrl}sales consulting.svg";
+  static const String arrowForward1 = "${_baseUrl}arrowgo.svg";
+
+  static const String addIcon = "${_baseUrl}add_icon.svg";
+  static const String arrowForward = "${_baseUrl}arrow_forward.svg";
+  static const String arrowBack = "assets\icons\arrow_back.svg";
+  static const String settingsIcon = "${_baseUrl}settings_icon.svg";
+  static const String changePassword = "${_baseUrl}change_password.svg";
+  static const String updateProfile = "${_baseUrl}update_profile.svg";
+  static const String logoutIcon = "${_baseUrl}logout_icon.svg";
+  static const String homeicon = "${_baseUrl}home_icon.svg";
+  static const String splash = "${_baseUrl}Splash.svg";
+  static const String noOrder = "${_baseUrl}Transfer_Document_icon.svg";
+  static const String bag = "${_baseUrl}Bag.svg";
+  static const String slider = "${_baseUrl}slider.svg";
+  static const String homelogo = "${_baseUrl}homelogo.svg";
+  static const String search = "${_baseUrl}search.svg";
+  static const String eye = "${_baseUrl}eye.svg";
+  static const String email = "${_baseUrl}email.svg";
+  static const String arrowback = "${_baseUrl}arrowback.svg";
+  static const String call = "${_baseUrl}call.svg";
+  static const String user = "${_baseUrl}User.svg";
+  static const String shoppingcart = "${_baseUrl}shopping-cart 2.svg";
+  static const String profile = "${_baseUrl}Profile.svg";
+  static const String home = "${_baseUrl}home 1.svg";
+  static const String floatingbutton = "${_baseUrl}actionbutton.svg";
+  static const String fav = "${_baseUrl}Heart - Iconly Pro.svg";
+  static const String logout = "${_baseUrl}Logout.svg";
+  static const String arrowgo = "${_baseUrl}arrowgo.svg";
+  static const String profilebag = "${_baseUrl}profilebag.svg";
+  static const String setting = "${_baseUrl}Setting - Iconly Pro.svg";
+  static const String line = "${_baseUrl}Line 14.svg";
+  static const String start = "${_baseUrl}start.svg";
+  static const String shoppingbag = "${_baseUrl}shopping bag.svg";
+  static const String salesconsulting = "${_baseUrl}sales consulting.svg";
+}
