@@ -47,6 +47,7 @@ dependencies:
   dots_indicator: ^4.0.1
   carousel_slider: ^5.0.0
   item_count_number_button: ^1.9.2
+  
 
   givestarreviews: ^1.0.2
 

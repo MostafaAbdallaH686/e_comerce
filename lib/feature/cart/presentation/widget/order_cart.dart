@@ -42,86 +42,99 @@ class OrderCard2 extends StatelessWidget {
           ),
         ],
       ),
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      child: SingleChildScrollView(
+        child: Container(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.345,
-                  height: MediaQuery.of(context).size.height * 0.154,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(image)),
-                    borderRadius: BorderRadius.circular(4),
+                SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.345,
+                        height: MediaQuery.of(context).size.height * 0.154,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(image: AssetImage(image)),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ordername,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 12),
+                          Row(
+                            children: [
+                              Text(orderrate),
+                              Icon(Icons.star, color: MyColors.yellow),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Text(AppString.item),
+                          Row(
+                            children: [
+                              Text(
+                                orderprice,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(width: 40),
+                              Text(
+                                orderoldprice,
+                                style: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  color: MyColors.pricegray,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                Text(
+                  style: TextStyle(color: MyColors.gray),
+                  "_______________________________________________",
+                ),
+
+                Row(
                   children: [
                     Text(
-                      ordername,
+                      AppString.totalorder,
                       style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
                       ),
                     ),
-                    SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Text(orderrate),
-                        Icon(Icons.star, color: MyColors.yellow),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Text(AppString.item),
-                    Row(
-                      children: [
-                        Text(
-                          orderprice,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(width: 40),
-                        Text(
-                          orderoldprice,
-                          style: TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            color: MyColors.pricegray,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+                    SizedBox(width: 160),
+                    Text(
+                      orderprice,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
-
-            Text(
-              style: TextStyle(color: MyColors.gray),
-              "_______________________________________________",
-            ),
-
-            Row(
-              children: [
-                Text(
-                  AppString.totalorder,
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-                ),
-                SizedBox(width: 160),
-                Text(
-                  orderprice,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

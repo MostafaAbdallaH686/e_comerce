@@ -8,7 +8,6 @@ import 'package:ntigradproject/core/utils/app_icon.dart';
 import 'package:ntigradproject/core/utils/app_image.dart';
 import 'package:ntigradproject/core/utils/app_string.dart';
 import 'package:ntigradproject/feature/home/presentation/categories_views.dart';
-import 'package:ntigradproject/feature/home/presentation/my_home.dart';
 import 'package:ntigradproject/feature/home/presentation/widget/item_card.dart';
 
 class FinalHomeView extends StatelessWidget {
