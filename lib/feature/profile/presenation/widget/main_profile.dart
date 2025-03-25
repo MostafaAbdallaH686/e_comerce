@@ -69,7 +69,7 @@ class _MainProfileState extends State<MainProfile> {
               icon: AppIcon.profilebag1,
               text: AppString.myorder,
               screen: () {
-                AppRoute.navigateTo(NoOrdersScreen());
+                AppRoute.navigateTo(OrderCompleteView());
               },
             ),
             ProfileCard(icon: AppIcon.fav1, text: AppString.favorite),

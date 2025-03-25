@@ -6,14 +6,12 @@ import 'package:ntigradproject/core/utils/app_image.dart';
 import 'package:ntigradproject/core/utils/app_string.dart';
 import 'package:ntigradproject/feature/orders/presentation/sharedwidget/order_status.dart';
 
-class CanceledView extends StatelessWidget {
-  const CanceledView({super.key});
+class CompleteView extends StatelessWidget {
+  const CompleteView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.specialbackground,
-
       appBar: AppBar(
         backgroundColor: MyColors.white,
         centerTitle: true,
@@ -37,22 +35,22 @@ class CanceledView extends StatelessWidget {
                 ),
               ),
               OrderStatus(
-                color: MyColors.pink,
+                color: MyColors.red,
                 text: Text(
                   AppString.compl,
                   style: TextStyle(
-                    color: MyColors.red,
+                    color: MyColors.white,
                     fontWeight: FontWeight.w500,
                     fontSize: 17,
                   ),
                 ),
               ),
               OrderStatus(
-                color: MyColors.red,
+                color: MyColors.pink,
                 text: Text(
                   AppString.cancelled,
                   style: TextStyle(
-                    color: MyColors.white,
+                    color: MyColors.red,
                     fontWeight: FontWeight.w500,
                     fontSize: 17,
                   ),
@@ -148,7 +146,7 @@ class CanceledView extends StatelessWidget {
                         ),
                         SizedBox(width: 5),
                         Text(
-                          AppString.ordercncel,
+                          AppString.orderdelivered,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: MyColors.red,

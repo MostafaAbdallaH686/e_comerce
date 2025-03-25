@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:ntigradproject/core/function/app_route.dart';
 import 'package:ntigradproject/core/function/app_snak_bar.dart';
 import 'package:ntigradproject/core/helper/cache_helper.dart';
@@ -38,98 +39,91 @@ class MyProfileView extends StatelessWidget {
               SizedBox(height: 20),
               SizedBox(
                 width: 120,
-                child: BlocBuilder<UpdateProfileCubit, UpdateProfileState>(
-                  builder: (context, state) {
-                    return Form(
-                      autovalidateMode:
-                          UpdateProfileCubit.get(context).autovalidateMode,
-                      key: UpdateProfileCubit.get(context).globalKey,
-                      child: Center(
-                        child: Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CircleAvatar(
-                                radius: 50,
-                                backgroundImage: AssetImage(AppImage.profile),
-                              ),
-                            ),
-
-                            Align(
-                              alignment: AlignmentDirectional.bottomEnd,
-                              child: CircleAvatar(
-                                radius: 18,
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 16,
-                                  backgroundColor: Colors.blue,
-                                ),
-                              ),
-                            ),
-                          ],
+                child: Center(
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(AppImage.profile),
                         ),
                       ),
-                    );
-                  },
+
+                      Align(
+                        alignment: AlignmentDirectional.bottomEnd,
+                        child: CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 16,
+                            backgroundColor: Colors.blue,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 66),
-              DefaultTextFormFiled(
-                // validator: (String? text) {
-                //   String error;
-                //   if (text != null) {
-                //     if (text.isNotEmpty) {
-                //       final RegExp nameRegex = RegExp(r'^[a-zA-Z ]+$');
-                //       if (nameRegex.hasMatch(text)) {
-                //         return null;
-                //       } else {
-                //         error = 'name must be in English';
-                //       }
-                //     } else {
-                //       error = '  enter Name';
-                //     }
-                //   } else {
-                //     error = '  you must assighn Name';
-                //   }
-                //   return error;
-                // },
-                label: AppString.fullname,
-                icons: AppIcon.user,
-                hint: 'fullname',
-                controller: UpdateProfileCubit.get(context).usernameController,
-                validator:
-                    UpdateProfileCubit.get(context).validator.nameValidator,
-              ),
+              BlocBuilder<UpdateProfileCubit, UpdateProfileState>(
+                builder: (context, state) {
+                  return Form(
+                    key: UpdateProfileCubit.get(context).globalKey,
+                    autovalidateMode:
+                        UpdateProfileCubit.get(context).autovalidateMode,
+                    child: Column(
+                      children: [
+                        DefaultTextFormFiled(
+                          label: AppString.fullname,
+                          icons: AppIcon.user,
+                          hint: 'fullname',
+                          controller:
+                              UpdateProfileCubit.get(
+                                context,
+                              ).usernameController,
+                          validator:
+                              UpdateProfileCubit.get(
+                                context,
+                              ).validator.nameValidator,
+                        ),
 
-              SizedBox(height: 10),
-              DefaultTextFormFiled(
-                validator: (String? text) {
-                  String error;
-                  if (text != null) {
-                    if (text.isNotEmpty) {
-                      final RegExp phoneRegex = RegExp(
-                        r'^(010|011|012|015)[0-9]{8}$',
-                      );
-                      if (phoneRegex.hasMatch(text)) {
-                        return null;
-                      } else {
-                        error = 'Invalid phone number.';
-                      }
-                    } else {
-                      error = ' enter phone number ';
-                    }
-                  } else {
-                    error = '  you must assighn phone number ';
-                  }
-                  return error;
+                        SizedBox(height: 10),
+                        DefaultTextFormFiled(
+                          validator: (String? text) {
+                            String error;
+                            if (text != null) {
+                              if (text.isNotEmpty) {
+                                final RegExp phoneRegex = RegExp(
+                                  r'^(010|011|012|015)[0-9]{8}$',
+                                );
+                                if (phoneRegex.hasMatch(text)) {
+                                  return null;
+                                } else {
+                                  error = 'Invalid phone number.';
+                                }
+                              } else {
+                                error = ' enter phone number ';
+                              }
+                            } else {
+                              error = '  you must assighn phone number ';
+                            }
+                            return error;
+                          },
+                          controller:
+                              UpdateProfileCubit.get(context).phoneController,
+
+                          label: AppString.phone,
+                          icons: AppIcon.call,
+                          hint: 'phone',
+                        ),
+                      ],
+                    ),
+                  );
                 },
-                controller: UpdateProfileCubit.get(context).phoneController,
-
-                label: AppString.phone,
-                icons: AppIcon.call,
-                hint: 'phone',
               ),
+
               SizedBox(height: 70),
               Container(
                 width: double.infinity,
@@ -154,7 +148,6 @@ class MyProfileView extends StatelessWidget {
                       AppRoute.navigateTo(MainProfile());
                     }
                   },
-
                   builder: (context, state) {
                     if (state is UpdateProfileLoading) {
                       return CustomCircleProgressInicator();

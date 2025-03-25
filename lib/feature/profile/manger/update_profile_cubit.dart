@@ -22,10 +22,9 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     String? username = cacheHelper.getDataString(
       key: SharedPrefereneceKey.name,
     );
-    String? email = cacheHelper.getDataString(key: SharedPrefereneceKey.email);
+
     usernameController = TextEditingController(text: username);
     String? phone = cacheHelper.getDataString(key: SharedPrefereneceKey.phone);
-    emailController = TextEditingController(text: email);
     phoneController = TextEditingController(text: phone);
   }
   static UpdateProfileCubit get(context) => BlocProvider.of(context);
@@ -37,7 +36,6 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   late TextEditingController phoneController;
 
   late TextEditingController usernameController;
-  late TextEditingController emailController;
 
   XFile? image;
   final ImagePicker _imagePicker = ImagePicker();
@@ -84,10 +82,8 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
 
     if (globalKey.currentState!.validate()) {
       var response = await repo.update(
-        email: emailController.text,
         name: usernameController.text,
         phone: phoneController.text,
-        image: image == null ? null : File(image!.path),
       );
       response.fold((e) => emit(UpdateProfileFailing(errMessage: e)), (
         r,

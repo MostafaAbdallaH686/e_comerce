@@ -15,43 +15,30 @@ class UpdateProfileRepo {
   ApiHelper apiHelper = ApiHelper();
 
   Future<Either<String, void>> update({
-    required String email,
     required String name,
     required String phone,
-
-    required File? image,
   }) async {
     try {
       log(phone);
 
       log(name);
-      log(email);
-
-      log(image?.path ?? "Path not Valid");
-      var path =
-          image != null
-              ? await MultipartFile.fromFile(
-                image.path,
-                filename: image.path.split('/').last,
-              )
-              : null;
-      log(path?.toString() ?? "");
+      // // log(image?.path ?? "Path not Valid");
+      // // var path =
+      // //     image != null
+      // //         ? await MultipartFile.fromFile(
+      // //           image.path,
+      // //           filename: image.path.split('/').last,
+      // //         )
+      // //         : null;
+      // log(path?.toString() ?? "");
       Map<String, dynamic> data = {};
-      if (path == null) {
-        data = {
-          // ApiKeypoint.email: email,
-          ApiKeypoint.name: name,
-          ApiKeypoint.phone: phone,
-        };
-      } else {
-        data = {
-          // ApiKeypoint.email: email,
-          ApiKeypoint.phone: phone,
 
-          ApiKeypoint.name: name,
-          ApiKeypoint.image: path,
-        };
-      }
+      data = {
+        // ApiKeypoint.email: email,
+        ApiKeypoint.name: name,
+        ApiKeypoint.phone: phone,
+      };
+
       log(data.toString());
       await apiHelper.put(
         endPoint: ApiEndpoint.updateprofile,
@@ -75,7 +62,9 @@ class UpdateProfileRepo {
         endPoint: ApiEndpoint.getuserdata,
         isAuth: true,
       );
-      UserLoginModel user = UserLoginModel.fromJson(response[ApiKeypoint.user]);
+      UserLoginModel user = UserLoginModel.fromJson(
+        response[{ApiKeypoint.name, ApiKeypoint.phone}],
+      );
 
       log(" Get Data Reponse = ${response}");
       log(" Get Data Reponse = ${user.toMap()}");
@@ -85,17 +74,10 @@ class UpdateProfileRepo {
         value: user.name,
       );
       await cacheHelper.saveData(
-        key: SharedPrefereneceKey.name,
-        value: user.name,
-      );
-      await cacheHelper.saveData(
-        key: SharedPrefereneceKey.imagepath,
-        value: user.image,
-      );
-      await cacheHelper.saveData(
         key: SharedPrefereneceKey.phone,
-        value: user.image,
+        value: user.phone,
       );
+
       return right(0);
     } on CustomDioException catch (e) {
       cacheHelper.saveData(key: SharedPrefereneceKey.isLogin, value: false);

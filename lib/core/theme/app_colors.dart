@@ -13,8 +13,13 @@ abstract class MyColors {
   static const Color blue = Colors.blue;
   static const Color containColCateNonSelect = Color(0xFFFFCCD5);
   static const Color dividerColor = Color(0xFFCACACA);
+  static const Color gray = Color(0xffBBBBBB);
+  static const Color black = Color(0xff000000);
+  static const Color yellow = Color(0xffF7B305);
+  static const Color pricegray = Color(0xffA7A7A7);
+  static const Color shadow = Color(0xff000040);
+  static const Color datecolor = Color(0xff391713);
 
-  static const Color black = Colors.black;
   static const Color textblack = Color(0xffA8A8A9);
   static const Color grey = Color(0xff676767);
   static const Color greyBorder = Color(0xffCDCDCD);
